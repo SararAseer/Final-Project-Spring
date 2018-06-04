@@ -12,7 +12,6 @@ void mousePressed(){
 
 void setup(){
   frameRate(300);
-
   totx=toty=250;
    x=y=250;
   size(750,750);
@@ -149,6 +148,3 @@ void keyPressed(){
   }
   
 }
-
-// A pixel width an alpha level below this value is
-// considered transparent.
