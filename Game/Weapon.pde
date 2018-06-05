@@ -39,9 +39,11 @@ class Weapon{
   }
   
   void update(){
-    if(pos.x>width || pos.y >height|| pos.x<0 || pos.y<0){
+   
+    if(pos.x>750 || pos.y >750|| pos.x<0 || pos.y<0){
       bounds=false;
     }
+   
     if(bounds){
     pos.add(vel);
     totx2+=vel.x;

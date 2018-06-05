@@ -15,12 +15,12 @@ void mousePressed(){
 
 
 void setup(){
-  frameRate(300);
-  totx=toty=250;
-   x=y=250;
-  size(750,750);
- map= new Map();
-  fighters = new ArrayList<Enemies>();  
+    frameRate(240);
+    totx=toty=250;
+    x=y=250;
+    size(1000,1000);
+    map= new Map();
+    fighters = new ArrayList<Enemies>();  
     counter=0;
     space=true;
     ship= new Ship();
@@ -30,17 +30,18 @@ void setup(){
 }
 
 void draw(){
-  background(0);
-  int a=0;
-  Random rand = new Random();
-  if(fighters.size()>0){
-   a=rand.nextInt(fighters.size())+1;
-  }
-  if(fighters.size()==0){
-    fighters.add(new Enemies(0));
-    fighters.add(new Enemies(1));
-    fighters.add(new Enemies(2));
-    fighters.add(new Enemies(3));
+    int a=0;
+    background(0);
+     map.Display();
+    Random rand = new Random();
+    if(fighters.size()>0){
+      a=rand.nextInt(fighters.size())+1;
+    }
+    if(fighters.size()==0){
+      fighters.add(new Enemies(0));
+      fighters.add(new Enemies(1));
+      fighters.add(new Enemies(2));
+      fighters.add(new Enemies(3));
 
   }/*
       final float az=coo.pos.x;
@@ -64,8 +65,6 @@ void draw(){
     counter=0;
     space=true;
   }
-    background(0);
-      map.Display();
 
    ship.Display();
     if(keyPressed && keyCode==UP){
@@ -99,7 +98,7 @@ void draw(){
      bullets.get(i).update();
      for(int q=0; q < fighters.size(); q++){
        
-     if(bullets.size()!=i&& fighters.size()!=q&&abs(fighters.get(q).totx1-(bullets.get(i).totx3+(bullets.get(i).totx2/2)))<=12.5 && abs(fighters.get(q).toty1-(bullets.get(i).toty3+(bullets.get(i).toty2/2)))<=12.5){
+     if(bullets.size()!=i&& fighters.size()!=q&&abs(fighters.get(q).totx1-(bullets.get(i).totx3+(bullets.get(i).totx2/2)))<=13 && abs(fighters.get(q).toty1-(bullets.get(i).toty3+(bullets.get(i).toty2/2)))<=13){
        fighters.get(q).sd(true);
        fighters.remove(q);
        bullets.remove(i);
@@ -132,25 +131,4 @@ void draw(){
   
 
 
-void keyPressed(){
-  if(key=='w' ){
-     
-    
-   
-  }
-   else if(key=='a'){
-       totx++;
-       
-     
-    
-  }
-   else if(key=='s'){
-     toty--;
-    
-  }
-   else if(key=='d'){
-     totx--;
-     
-  }
   
-}
