@@ -48,16 +48,52 @@ class Ship{
          heading+=.05 ;
       }
       else if(x=='w'){
+        boolean c=true;
+        for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
+          color a=get(i,(int)(toty-1)*2-40);
+          if(a!=color(0)){
+            c=false;
+          }
+        }
+        if(c){
           toty--;
+        }
       }
       else if(x=='s'){
-         toty++;
+        boolean c=true;
+        for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
+          color a=get(i,(int)(toty+1)*2+40);
+          if(a!=color(0)){
+            c=false;
+          }
+        }
+        if(c){
+          toty++;
+        }
       }
       else if(x=='a'){
+        boolean c=true;
+        for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
+          color a=get((int)(totx+1)*2+40,i);
+          if(a!=color(0)){
+            c=false;
+          }
+        }
+        if(c){
           totx++;
+        } 
       }
       else if(x=='d'){
-          totx--; 
+        boolean c=true;
+        for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
+          color a=get((int)(totx-1)*2-40,i);
+          if(a!=color(0)){
+            c=false;
+          }
+        }
+        if(c){
+          totx--;
+        } 
       }
       
       

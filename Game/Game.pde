@@ -1,5 +1,6 @@
 Map map;
 float x,y,totx,toty;
+PImage  m;
 
 
 
@@ -7,6 +8,9 @@ void mousePressed(){
   x=mouseX;
   y=mouseY;
   System.out.println(x+","+y);
+  m= loadImage("map.jpeg");
+  System.out.println(m.width+","+m.height);
+
 }
 
 
@@ -15,7 +19,7 @@ void setup(){
   totx=toty=250;
    x=y=250;
   size(750,750);
- 
+ map= new Map();
   fighters = new ArrayList<Enemies>();  
     counter=0;
     space=true;
@@ -52,7 +56,7 @@ void draw(){
       final float az=fighters.get(i).totx1;
       final float bz=fighters.get(i).toty1;
       final float cz= fighters.get(i).heading;
-     ebullets.add(new Weapon(new Vector(az,bz),cz,0));
+   //  ebullets.add(new Weapon(new Vector(az,bz),cz,0));
       }
   }
   counter++;
@@ -61,6 +65,8 @@ void draw(){
     space=true;
   }
     background(0);
+      map.Display();
+
    ship.Display();
     if(keyPressed && keyCode==UP){
       ship.move('w'); 
@@ -128,7 +134,7 @@ void draw(){
 
 void keyPressed(){
   if(key=='w' ){
-    toty++;
+     
     
    
   }
