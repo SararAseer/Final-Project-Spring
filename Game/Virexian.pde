@@ -23,6 +23,7 @@ class Ship{
      dead=a; 
   }
    void Display(){
+     heading=atan2(mouseX-totx*2-12.5,mouseY-toty*2-12.5)*-1+radians(90);
      if(!dead){
      pushMatrix();
       ship=loadImage("ship.png");
@@ -42,10 +43,10 @@ class Ship{
     
     void move(char x){
       if(x=='z'){
-         heading-=.05; 
+         heading=atan2(mouseX-totx*2,mouseY-toty*2)*-1+45;
       }
       else if(x=='c'){
-         heading+=.05 ;
+         heading=atan2(mouseX-totx*2,mouseY-toty*2)*-1+45;
       }
       else if(x=='w'){
         boolean c=true;
@@ -80,7 +81,7 @@ class Ship{
           }
         }
         if(c){
-          totx++;
+          totx--;
         } 
       }
       else if(x=='d'){
@@ -92,7 +93,7 @@ class Ship{
           }
         }
         if(c){
-          totx--;
+          totx++;
         } 
       }
       

@@ -96,8 +96,7 @@ void draw(){
    for(int i=0; i < bullets.size(); i++){
      bullets.get(i).Display();
      bullets.get(i).update();
-     for(int q=0; q < fighters.size(); q++){
-       
+     for(int q=0; q < fighters.size(); q++){       
      if(bullets.size()!=i&& fighters.size()!=q&&abs(fighters.get(q).totx1-(bullets.get(i).totx3+(bullets.get(i).totx2/2)))<=13 && abs(fighters.get(q).toty1-(bullets.get(i).toty3+(bullets.get(i).toty2/2)))<=13){
        fighters.get(q).sd(true);
        fighters.remove(q);

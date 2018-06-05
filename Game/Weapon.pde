@@ -31,7 +31,7 @@ class Weapon{
     toty3=toty;
     totx2=x.q;
     toty2=x.w;
-      shot=loadImage("shot.png");
+      shot=loadImage("BLUE.png");
       bounds=true;
       pos= x;
       heading =y;
@@ -58,7 +58,8 @@ class Weapon{
     pushMatrix();
     translate(2*totx3+totx2,2*toty3+toty2);
     rotate(heading);
-    image(shot,12.5,-12.5,25,25); 
+    image(shot,25,-25,50,50); 
+    image(shot,25,-50,50,50); 
     popMatrix();
     }
     
