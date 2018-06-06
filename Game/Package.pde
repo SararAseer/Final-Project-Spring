@@ -21,13 +21,12 @@ class Package{
        g+=a.nextInt(15)*(t==true? 1:-1);
        t=a.nextBoolean();
        b+=a.nextInt(15)*(t==true? 1:-1);
-       pushMatrix();       
+       pushMatrix();
        translate(x1*2,y1*2);
        fill(r,g,b);
        ellipse(0,0,25,25);
        fill(250);
        textSize(12);
-       text("PACKAGE! COME HERE PLS", -50, 0);
        popMatrix();
    }
    

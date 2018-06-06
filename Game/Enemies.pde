@@ -2,7 +2,6 @@ import java.util.Random;
 class Enemies{
   float totx1,toty1;
 
-  Vector pos= new Vector(width/2, height/2);
   Vector vel= new Vector(0,0);
   float heading=0;
   PImage hip;

@@ -10,7 +10,6 @@ int counter;
 
 
 class Ship{
-  Vector pos= new Vector(width/2, height/2);
   Vector vel= new Vector(0,0);
   float heading=0;
   PImage ship;
@@ -53,8 +52,10 @@ class Ship{
         boolean c=true;
         for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
           color a=get(i,(int)(toty-1)*2-40);
+          int h=(int)(toty-1)*2-40;
+          System.out.println(i+","+h);
           if(a!=color(0)){
-            c=false;
+           c=false;
           }
           
         }
@@ -66,6 +67,9 @@ class Ship{
         boolean c=true;
         for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
           color a=get(i,(int)(toty+1)*2+40);
+          int h=(int)(toty-1)*2-40;
+          
+          System.out.println(i+","+h);
           if(a!=color(0)){
             c=false;
           }
@@ -78,7 +82,7 @@ class Ship{
       else if(x=='a'){
         boolean c=true;
         for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
-          color a=get((int)(totx+1)*2+40,i);
+          color a=get((int)(totx+1)*2-40,i);
           if(a!=color(0)){
             c=false;
           }
@@ -91,7 +95,7 @@ class Ship{
       else if(x=='d'){
         boolean c=true;
         for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
-          color a=get((int)(totx-1)*2-40,i);
+          color a=get((int)(totx-1)*2+40,i);
           if(a!=color(0)){
             c=false;
           }
