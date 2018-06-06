@@ -3,6 +3,7 @@ Enemies coo;
 ArrayList<Enemies> fighters;
 ArrayList<Weapon> bullets;
 ArrayList<Weapon> ebullets;
+ArrayList<Package> packages;
 boolean space;
 int counter;
 
@@ -55,6 +56,7 @@ class Ship{
           if(a!=color(0)){
             c=false;
           }
+          
         }
         if(c){
           toty--;
@@ -67,6 +69,7 @@ class Ship{
           if(a!=color(0)){
             c=false;
           }
+         
         }
         if(c){
           toty++;
@@ -79,6 +82,7 @@ class Ship{
           if(a!=color(0)){
             c=false;
           }
+         
         }
         if(c){
           totx--;
@@ -91,6 +95,7 @@ class Ship{
           if(a!=color(0)){
             c=false;
           }
+           
         }
         if(c){
           totx++;

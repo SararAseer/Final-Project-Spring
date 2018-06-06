@@ -1,7 +1,7 @@
 Map map;
 float x,y,totx,toty;
 PImage  m;
-
+int currWeapon;
 
 
 void mousePressed(){
@@ -21,6 +21,7 @@ void setup(){
     size(1000,1000);
     map= new Map();
     fighters = new ArrayList<Enemies>();  
+    packages=new ArrayList<Package>();
     counter=0;
     space=true;
     ship= new Ship();
@@ -32,7 +33,16 @@ void setup(){
 void draw(){
     int a=0;
     background(0);
-     map.Display();
+    map.Display();
+    for(int i=0; i< packages.size(); i++){
+      Package q=packages.get(i);
+      q.Display();
+      if(abs(totx-q.x1)<25 && abs(toty-q.y1)<30){
+        Random rands = new Random();
+        currWeapon=rands.nextInt(2);
+        packages.remove(i);
+    }
+    }
     Random rand = new Random();
     if(fighters.size()>0){
       a=rand.nextInt(fighters.size())+1;
@@ -80,25 +90,36 @@ void draw(){
       ship.move('d');
     }
     else if(!ship.dead && keyPressed && key==' '&& space && bullets.size()<10 ){
-      final float xz=totx*2;
-      final float yz=toty*2;
+      final float xz=totx;
+      final float yz=toty;
       final float hz=ship.heading;
       space=false;
-      bullets.add(new Weapon(new Vector(xz,yz),hz));
+      
+      if(currWeapon==0){
+        bullets.add(new Weapon(new Vector(xz,yz),hz));
+      }
+      else if(currWeapon==1){        
+       bullets.add(new BlueLaser(new Vector(xz,yz),hz));
+    }
       
     }
-    else if(keyPressed ){ship.move(key); 
+    else if(keyPressed ){
+      
+      ship.move(key); 
     
    }
    
    ship.update();
    ship.vel=new Vector(0,0);
+   
    for(int i=0; i < bullets.size(); i++){
      bullets.get(i).Display();
      bullets.get(i).update();
-     for(int q=0; q < fighters.size(); q++){       
-     if(bullets.size()!=i&& fighters.size()!=q&&abs(fighters.get(q).totx1-(bullets.get(i).totx3+(bullets.get(i).totx2/2)))<=13 && abs(fighters.get(q).toty1-(bullets.get(i).toty3+(bullets.get(i).toty2/2)))<=13){
+     System.out.println(bullets.get(i).x());
+     for(int q=0; q < fighters.size(); q++){    
+      if(bullets.size()!=i&& fighters.size()!=q&&abs(fighters.get(q).totx1*2-bullets.get(i).x())<=13 && abs(fighters.get(q).toty1*2-bullets.get(i).y())<=13){
        fighters.get(q).sd(true);
+       packages.add(new Package(fighters.get(q).totx1,fighters.get(q).toty1));
        fighters.remove(q);
        bullets.remove(i);
      }
