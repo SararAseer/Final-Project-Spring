@@ -4,9 +4,8 @@ ArrayList<Enemies> fighters;
 ArrayList<Weapon> bullets;
 ArrayList<Weapon> ebullets;
 ArrayList<Package> packages;
-boolean space;
 int counter;
-
+boolean space;
 
 
 class Ship{
@@ -14,7 +13,8 @@ class Ship{
   float heading=0;
   PImage ship;
   boolean dead;
-  
+  boolean []moves= new boolean [5];
+
   
   float h(){
     return heading;
@@ -41,14 +41,10 @@ class Ship{
         popMatrix();
     }
     
-    void move(char x){
-      if(x=='z'){
-         heading=atan2(mouseX-totx*2,mouseY-toty*2)*-1+45;
-      }
-      else if(x=='c'){
-         heading=atan2(mouseX-totx*2,mouseY-toty*2)*-1+45;
-      }
-      else if(x=='w'){
+    void move(){
+       heading=atan2(mouseX-totx*2,mouseY-toty*2)*-1+45;
+     
+      if(moves[0]==true){
         boolean c=true;
         for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
           color a=get(i,(int)(toty-1)*2-40);
@@ -63,7 +59,7 @@ class Ship{
           toty--;
         }
       }
-      else if(x=='s'){
+      if(moves[1]==true){
         boolean c=true;
         for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
           color a=get(i,(int)(toty+1)*2+40);
@@ -79,7 +75,7 @@ class Ship{
           toty++;
         }
       }
-      else if(x=='a'){
+     if(moves[2]==true){
         boolean c=true;
         for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
           color a=get((int)(totx+1)*2-40,i);
@@ -92,7 +88,7 @@ class Ship{
           totx--;
         } 
       }
-      else if(x=='d'){
+      if(moves[3]==true){
         boolean c=true;
         for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
           color a=get((int)(totx-1)*2+40,i);
@@ -105,7 +101,16 @@ class Ship{
           totx++;
         } 
       }
-      
+      if(moves[4]){
+        final float xz=totx;
+        final float yz=toty;
+        final float hz=heading;
+        space=false;
+        bars.mana+=1;
+        bullets.add(new Weapon(new Vector(xz,yz),hz));
+     
+        
+      }
       
     }
   

@@ -2,8 +2,10 @@ class Package{
   int c;
   int r,g,b=1;
   boolean yes;
-  float x1,y1,heading;
-   public Package(float x, float y){
+  float x1,y1;
+  
+  
+  public Package(float x, float y){       
        x1=x;
        y1=y;
        c=19;
@@ -14,6 +16,7 @@ class Package{
    }
     
    void Display(){
+       
        Random a= new Random();
        boolean t=a.nextBoolean();
        r+=a.nextInt(15)*(t==true? 1:-1) ;
