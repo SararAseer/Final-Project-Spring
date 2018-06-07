@@ -36,13 +36,13 @@ void draw(){
     background(0);
     bars.Display();
     pushMatrix();
-    translate(-totx,-toty);
+   // translate(-totx,-toty);
     map.Display();
      popMatrix();
     for(int i=0; i< packages.size(); i++){
       Package q=packages.get(i);
       q.Display();
-      if(abs(totx-q.x1)<25 && abs(toty-q.y1)<30){
+      if(abs(totx-q.x1)<30 && abs(toty-q.y1)<30){
         Random rands = new Random();
         currWeapon=rands.nextInt(3);
         packages.remove(i);
@@ -79,7 +79,12 @@ void draw(){
   counter++;
   if(counter>=20){
     counter=0;
-    bars.mana+=10;
+    if(bars.mana>=1){
+      bars.mana-=.1;
+    }
+    if(bars.health>=1){
+      bars.health-=.05;
+    }
     space=true;
   }
 
@@ -96,12 +101,12 @@ void draw(){
     else if(keyPressed &&keyCode==LEFT){
       ship.move('d');
     }
-    else if(!ship.dead && keyPressed && key==' '&& space && bars.mana>25 ){
+    else if(!ship.dead && keyPressed && key==' '&& space && bars.mana<10 ){
       final float xz=totx;
       final float yz=toty;
       final float hz=ship.heading;
       space=false;
-      bars.mana-=25;
+      bars.mana+=1;
       bullets.add(new Weapon(new Vector(xz,yz),hz));
      
       
@@ -123,8 +128,9 @@ void draw(){
        fighters.get(q).sd(true);
        final float x12=fighters.get(q).totx1;
        final float y12=fighters.get(q).toty1;
-       
-       packages.add(new Package(x12,y12));
+       if(rand.nextInt(50)>40){
+          packages.add(new Package(x12,y12));
+       }
        fighters.remove(q);
        bullets.remove(i);
      }
@@ -136,10 +142,9 @@ void draw(){
    }
    for(int i=0; i < ebullets.size(); i++){
      ebullets.get(i).Display();
-     ebullets.get(i).update();
-     
+     ebullets.get(i).update();   
      if(i<ebullets.size()&&ship.dead!=true&&abs(totx-(ebullets.get(i).totx3+(ebullets.get(i).totx2/2)))<=12.5 && abs(toty-(ebullets.get(i).toty3+(ebullets.get(i).toty2/2)))<=12.5){
-       bars.health-=25;
+       bars.health+=1;
        ebullets.remove(i);
      }
      else if(ebullets.get(i).bounds==false){
