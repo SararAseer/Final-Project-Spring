@@ -44,8 +44,6 @@ void keyReleased(){
 void mousePressed(){
   x=mouseX;
   y=mouseY;
-  totx=x/2;
-  toty=y/2;
   if(mouseX>=380 && mouseX<=510&& mouseY>380 && mouseY<410){
     begin.starts=true;
   }
@@ -73,7 +71,9 @@ void setup(){
 
 void draw(){
   if(!start){
+    pushMatrix();
     begin.roll();
+    popMatrix();
   }
   if(start){
     int a=0;
@@ -160,7 +160,7 @@ void draw(){
        fighters.get(q).sd(true);
        final float x12=fighters.get(q).totx1;
        final float y12=fighters.get(q).toty1;
-       if(rand.nextInt(50)>40){
+       if(rand.nextInt(50)>0){
           packages.add(new Package(x12,y12));
        }
        fighters.remove(q);
