@@ -2,10 +2,12 @@
 class Map{
 String [][] map;
 PImage  piece;
+
     public Map(){
        
 
     }
+    
      public Map(String z){        
         map= new String[800][900];
         for(int i=0; i < map.length;i++){
@@ -29,7 +31,17 @@ PImage  piece;
         }
     }
     
-   
+     void BlockCreator(float x1, float y1){
+       float size=25/4;
+       pushMatrix();
+       translate(x1,y1);
+       fill(0,255,0);  
+       rect(0,0,25/size,25/size);
+       rect(0,50/size,50/size,50/size);
+       rect(50/size,0,50/size,50/size);
+       rect(75/size,75/size,25/size,25/size);
+       popMatrix();
+     }
      void Display(){
      for(int i=0; i < map.length;i++){
           for(int x=0; x < map[i].length;x++){
@@ -46,16 +58,19 @@ PImage  piece;
       for( int i=200; i <1000; i+=25){
            String s="block1.png";
            piece= loadImage(s);
-           image(piece,i-totx*2,100-toty*2,25,25); 
-           image(piece,i-totx*2,1000-toty*2,25,25); 
+           BlockCreator(i-totx*2,100-toty*2);
+           BlockCreator(i-totx*2,1000-toty*2);
+           //image(piece,i-totx*2,100-toty*2,25,25); 
+           //image(piece,i-totx*2,1000-toty*2,25,25); 
 
       }
        for( int i=100; i <1000; i+=25){
            String s="block2.png";
-          
+           BlockCreator(200-totx*2,i-toty*2);
+           BlockCreator(1000-totx*2,i-toty*2);
            piece= loadImage(s);
-           image(piece,200-totx*2,i-toty*2,25,25); 
-           image(piece,1000-totx*2,i-toty*2,25,25); 
+          // image(piece,200-totx*2,i-toty*2,25,25); 
+           //image(piece,1000-totx*2,i-toty*2,25,25); 
 
       }
      }
