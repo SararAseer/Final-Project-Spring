@@ -3,6 +3,8 @@ float x,y,totx,toty;
 PImage  m;
 int currWeapon;
 Bars bars;
+boolean start;
+Intro begin;
 
 void keyPressed(){
   if(key=='w'){
@@ -44,6 +46,9 @@ void mousePressed(){
   y=mouseY;
   totx=x/2;
   toty=y/2;
+  if(mouseX>=380 && mouseX<=510&& mouseY>380 && mouseY<410){
+    begin.starts=true;
+  }
 }
 
 
@@ -51,7 +56,7 @@ void setup(){
     frameRate(240);
     totx=toty=125;
     x=y=250;
-    size(500,500);
+    size(700,700);
     map= new Map("hello");
     fighters = new ArrayList<Enemies>();  
     packages=new ArrayList<Package>();
@@ -63,9 +68,14 @@ void setup(){
     ebullets = new ArrayList<Weapon>();
     currWeapon=2;
     bars= new Bars();
+    begin=new Intro();
 }
 
 void draw(){
+  if(!start){
+    begin.roll();
+  }
+  if(start){
     int a=0;
     background(0);
     bars.Display();
@@ -181,6 +191,6 @@ void draw(){
 }
 
   
-
+}
 
   
