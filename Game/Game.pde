@@ -5,7 +5,7 @@ int currWeapon;
 Bars bars;
 boolean start;
 Intro begin;
-
+int b;
 void keyPressed(){
   if(key=='w'){
      ship.moves[0]=true;   
@@ -47,10 +47,12 @@ void mousePressed(){
   if(mouseX>=380 && mouseX<=510&& mouseY>380 && mouseY<410){
     begin.starts=true;
   }
+  System.out.println(hue(get(mouseX,mouseY)));
 }
 
 
 void setup(){
+    b=0;
     frameRate(240);
     totx=toty=125;
     x=y=250;
@@ -63,6 +65,7 @@ void setup(){
     ship= new Ship();
     ship.sd(false);
     bullets = new ArrayList<Weapon>();
+    Lasers = new ArrayList<LaserGrid>();
     ebullets = new ArrayList<Weapon>();
     currWeapon=2;
     bars= new Bars();
@@ -75,14 +78,44 @@ void draw(){
     begin.roll();
     popMatrix();
   }
-  if(start){
+  if(start){   
     int a=0;
     background(0);
+    Random line=new Random();
+    int ra=line.nextInt(1000);
+    if(ra>90 && ra<100 ){
+      if(line.nextBoolean()){
+      Lasers.add(new LaserGrid(1));
+      }
+      else{
+        Lasers.add(new LaserGrid(2));
+      }
+    }
+    pushMatrix();
+    strokeWeight(2);
+    stroke(255,0,0,100);
+    for(int i=-3; i < 1000; i+=40){
+     line(-100, i, 1000, i+40);
+    }
+    for(int i=-3; i < 1000; i+=40){
+     line(i, -100, i-40, 1000);
+    }
+    if(b<700){
+      b++;
+    }
+    else {
+      b=-100;
+    }
+    line(-100, b, 1000, b+40);
+    popMatrix();     
     bars.Display();
     pushMatrix();
     map.Display();
      popMatrix();
      ship.move();
+    for(int i=0; i< Lasers.size(); i++){
+       Lasers.get(i).Display();
+     }
     for(int i=0; i< packages.size(); i++){
       final float totxz=totx;
       final float totyz=toty;

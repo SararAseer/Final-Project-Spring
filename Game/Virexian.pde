@@ -4,6 +4,7 @@ ArrayList<Enemies> fighters;
 ArrayList<Weapon> bullets;
 ArrayList<Weapon> ebullets;
 ArrayList<Package> packages;
+ArrayList<LaserGrid> Lasers;
 int counter;
 boolean space;
 
@@ -48,9 +49,10 @@ class Ship{
         boolean c=true;
         for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
           color a=get(i,(int)(toty-1)*2-40);
+          float v=hue(a);
           int h=(int)(toty-1)*2-40;
           System.out.println(i+","+h);
-          if(a!=color(0)){
+          if(a!=color(0)&&v!=0){
            c=false;
           }
           
@@ -61,12 +63,14 @@ class Ship{
       }
       if(moves[1]==true){
         boolean c=true;
+        
         for(int i=(int)totx*2-25;i<(int)totx*2+25;i++){
           color a=get(i,(int)(toty+1)*2+40);
+          float v=hue(a);
           int h=(int)(toty-1)*2-40;
           
           System.out.println(i+","+h);
-          if(a!=color(0)){
+          if(a!=color(0)&&v!=0){
             c=false;
           }
          
@@ -79,7 +83,8 @@ class Ship{
         boolean c=true;
         for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
           color a=get((int)(totx+1)*2-40,i);
-          if(a!=color(0)){
+          float v=hue(a);
+          if(a!=color(0)&& v!=0){
             c=false;
           }
          
@@ -92,7 +97,8 @@ class Ship{
         boolean c=true;
         for(int i=(int)toty*2-25;i<(int)toty*2+25;i++){
           color a=get((int)(totx-1)*2+40,i);
-          if(a!=color(0)){
+          float v=hue(a);
+          if(a!=color(0)&&v!=0){
             c=false;
           }
            
