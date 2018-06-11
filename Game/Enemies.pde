@@ -57,6 +57,7 @@ class Enemies{
         Random rand = new Random();
         int a=rand.nextInt(100);
         boolean c=rand.nextBoolean();
+       
         if(heading+.05<atan2((toty1-toty)*2,(totx1-totx)*2)){
         heading+=.05;
         }
