@@ -55,19 +55,19 @@ PImage  piece;
           
      }
        
-      for( int i=200; i <1000; i+=25){
+      for( int i=200; i <1400; i+=25){
            String s="block1.png";
            piece= loadImage(s);
            BlockCreator(i-totx*2,100-toty*2);
-           BlockCreator(i-totx*2,1000-toty*2);
+           BlockCreator(i-totx*2,1400-toty*2);
            //image(piece,i-totx*2,100-toty*2,25,25); 
            //image(piece,i-totx*2,1000-toty*2,25,25); 
 
       }
-       for( int i=100; i <1000; i+=25){
+       for( int i=100; i <1400; i+=25){
            String s="block2.png";
            BlockCreator(200-totx*2,i-toty*2);
-           BlockCreator(1000-totx*2,i-toty*2);
+           BlockCreator(1400-totx*2,i-toty*2);
            piece= loadImage(s);
           // image(piece,200-totx*2,i-toty*2,25,25); 
            //image(piece,1000-totx*2,i-toty*2,25,25); 

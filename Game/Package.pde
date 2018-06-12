@@ -22,6 +22,7 @@ class Package{
        y1=y2-(toty-y3);
        Random a= new Random();
        boolean t=a.nextBoolean();
+       strokeWeight(10);
        r+=a.nextInt(15)*(t==true? 1:-1) ;
        t=a.nextBoolean();
        g+=a.nextInt(15)*(t==true? 1:-1);
@@ -29,7 +30,7 @@ class Package{
        b+=a.nextInt(15)*(t==true? 1:-1);
        pushMatrix();
        translate(x1*2,y1*2);
-       fill(r,g,b);
+       fill(r,g,b,100);
        ellipse(0,0,25,25);
        fill(250);
        textSize(12);

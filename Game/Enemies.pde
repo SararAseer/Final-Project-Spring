@@ -1,7 +1,7 @@
 import java.util.Random;
 class Enemies{
   float totx1,toty1;
-
+  String s;
   Vector vel= new Vector(0,0);
   float heading=0;
   PImage hip;
@@ -13,8 +13,11 @@ class Enemies{
   
    void Display(){
      if(!dead){
-      pushMatrix();
-      hip=loadImage("eship.png");
+       if(s==null){
+         s="eship.png";
+       }
+      pushMatrix();    
+      hip=loadImage(s);
       translate(totx1*2,toty1*2);
       rotate(heading);
       image(hip,25,-25,50,50); 
@@ -22,6 +25,13 @@ class Enemies{
      }
     }
      public Enemies(int a){
+       Random ran= new Random();
+      if(ran.nextBoolean()){
+        s="eship.png";
+      }
+      else{
+        s="eship2.png";
+      }
      if(a==0){
       totx1=110;
       toty1=100;

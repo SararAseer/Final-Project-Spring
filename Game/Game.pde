@@ -1,9 +1,10 @@
 Map map;
 float x,y,totx,toty;
 PImage  m;
+int count;
 int currWeapon;
 Bars bars;
-boolean start;
+boolean start,end;
 Intro begin;
 int b;
 void keyPressed(){
@@ -56,7 +57,7 @@ void setup(){
     frameRate(240);
     totx=toty=125;
     x=y=250;
-    size(700,700);
+    size(900,800);
     map= new Map("hello");
     fighters = new ArrayList<Enemies>();  
     packages=new ArrayList<Package>();
@@ -73,12 +74,19 @@ void setup(){
 }
 
 void draw(){
+  if(end){
+    translate(totx*2,toty*2);
+    textSize(50);
+    stroke(255);
+    fill(255);
+    text("You Have Won !!!!!!", -100,-100);
+  }
   if(!start){
     pushMatrix();
     begin.roll();
     popMatrix();
   }
-  if(start){   
+  if(start && !end){   
     int a=0;
     background(0);
     Random line=new Random();
@@ -133,13 +141,11 @@ void draw(){
     if(fighters.size()>0){
       a=rand.nextInt(fighters.size())+1;
     }
-    if(fighters.size()==0){
-      fighters.add(new Enemies(0));
-      fighters.add(new Enemies(1));
-      fighters.add(new Enemies(2));
-      fighters.add(new Enemies(3));
-
-  }/*
+    
+  if(fighters.size()==0){    
+    end=true;
+  }
+  /*
       final float az=coo.pos.x;
       final float bz=coo.pos.y;
       final float cz=coo.heading;

@@ -19,8 +19,13 @@ class Intro{
 
   void roll(){
     translate(e,0);
-    if(e<-700){
+    if(e<-700 && !start){
+      fighters.add(new Enemies(0));
+      fighters.add(new Enemies(1));
+      fighters.add(new Enemies(2));
+      fighters.add(new Enemies(3));
       start=true;
+      
     }
       
   if(starts && d<300){
