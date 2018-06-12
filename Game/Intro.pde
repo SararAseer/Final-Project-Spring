@@ -24,6 +24,14 @@ class Intro{
       fighters.add(new Enemies(1));
       fighters.add(new Enemies(2));
       fighters.add(new Enemies(3));
+      fighters.add(new Enemies(0));
+      fighters.add(new Enemies(1));
+      fighters.add(new Enemies(2));
+      fighters.add(new Enemies(3));
+      fighters.add(new Enemies(0));
+      fighters.add(new Enemies(1));
+      fighters.add(new Enemies(2));
+      fighters.add(new Enemies(3));
       start=true;
       
     }
