@@ -74,12 +74,20 @@ void setup(){
 }
 
 void draw(){
-  if(end){
+  if(end && !ship.dead){
     translate(totx*2,toty*2);
     textSize(50);
     stroke(255);
     fill(255);
     text("You Have Won !!!!!!", -100,-100);
+  }
+  else if(ship.dead){
+    translate(totx*2,toty*2);
+    textSize(50);
+    stroke(255);
+    fill(255);
+    text("You Have Lost Brodie ;_;", -100,-100);
+    
   }
   if(!start){
     pushMatrix();

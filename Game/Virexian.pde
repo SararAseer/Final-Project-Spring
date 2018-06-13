@@ -34,6 +34,10 @@ class Ship{
       popMatrix();
     //  image(map,0,0,750,750); 
      }
+     if(dead){
+       end=true;
+       
+     }
     }
     
     void update(){
