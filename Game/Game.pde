@@ -43,12 +43,17 @@ void keyReleased(){
 }
 
 void mousePressed(){
+  
   x=mouseX;
   y=mouseY;
   if(mouseX>=380 && mouseX<=510&& mouseY>380 && mouseY<410){
     begin.starts=true;
   }
   System.out.println(hue(get(mouseX,mouseY)));
+  if(ship.dead || end){
+    setup();
+    
+  }
 }
 
 
@@ -71,6 +76,8 @@ void setup(){
     currWeapon=2;
     bars= new Bars();
     begin=new Intro();
+    end=false;
+    start=false;
 }
 
 void draw(){
@@ -79,14 +86,14 @@ void draw(){
     textSize(50);
     stroke(255);
     fill(255);
-    text("You Have Won !!!!!!", -100,-100);
+    text("You Have Won !!!!!!(Click mouse to restart)", -100,-100);
   }
   else if(ship.dead){
     translate(totx*2,toty*2);
     textSize(50);
     stroke(255);
     fill(255);
-    text("You Have Lost Brodie ;_;", -100,-100);
+    text("You Have Lost Brodie ;_;(Click mouse to restart)", -100,-100);
     
   }
   if(!start){
