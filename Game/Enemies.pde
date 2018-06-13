@@ -43,22 +43,22 @@ class Enemies{
        
        totx1=50;
       toty1=100;
-       totx1=totx1+ran.nextInt(10);
-      toty1=toty1+ran.nextInt(10);
+       totx1=totx1+ran.nextInt(100);
+      toty1=toty1+ran.nextInt(100);
      }
      else if(a==2){
       
        totx1=50;
       toty1=50;
-       totx1=totx1+ran.nextInt(10);
-      toty1=toty1+ran.nextInt(10);
+       totx1=totx1+ran.nextInt(100);
+      toty1=toty1+ran.nextInt(100);
      }
      else if(a==3){
       
        totx1=200;
       toty1=200;
-       totx1=totx1+ran.nextInt(10);
-      toty1=toty1+ran.nextInt(10);
+       totx1=totx1+ran.nextInt(100);
+      toty1=toty1+ran.nextInt(100);
      }
      
      
